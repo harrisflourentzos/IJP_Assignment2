@@ -1,0 +1,68 @@
+import java.util.ArrayList;
+
+/**
+ * 
+ * The Location class represents locations on the "ApplicationName" application
+ * available to the user to move between. Any Location hosts a number of
+ * directions the user can look towards while looking around.
+ * 
+ * @author Harris Flourentzos
+ * @version 1.0
+ *
+ */
+public class Location {
+	// *************************** FIELDS ***************************
+	private String name;
+	private int numberOfDirections;
+	private ArrayList<Direction> directions;
+
+	// *************************** CONSTRUCTORS ***************************
+	/**
+	 * Constructor of the Class Location.
+	 * 
+	 * @param name
+	 * @param numberOfDirections
+	 */
+	public Location(String name, int numberOfDirections) {
+		this.name = name;
+		this.numberOfDirections = numberOfDirections;
+		directions = new ArrayList<Direction>();
+	}
+
+	// *************************** METHODS ***************************
+	// Accessor & Mutator Methods:
+	/**
+	 * 
+	 * @return The name of the Location.
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * 
+	 * @return The number of the available directions for this Location.
+	 */
+	public int getNumberOfDirections() {
+		return numberOfDirections;
+	}
+
+	/**
+	 * 
+	 * @return A list of all the available directions for this Location.
+	 */
+	public ArrayList<Direction> getDirections() {
+		return directions;
+	}
+	/**
+	 * Mutator method to populate the Location with directions.
+	 * @param direction
+	 */
+	public void setDirections(Direction direction) {
+		directions.add(direction);
+	}
+	
+	// Other Methods:
+	
+
+}

@@ -1,0 +1,48 @@
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+
+public class WorldController {
+
+	@FXML
+	private ImageView imageView;
+
+	@FXML
+	private ImageView basketView;
+
+	public void Initialise() {
+        Image image = new Image("LocationImages/R1D1.jpg");
+        imageView.setImage(image);
+	}
+	
+    public void pressRightButton(ActionEvent event) {
+       Image basket = new Image("ItemImages/basket.png");
+        basketView.setImage(basket);
+    }
+    public void pressLeftButton(ActionEvent event) {
+    	Image image = new Image("R1D1.png");
+    	imageView.setImage(image);
+    }
+    
+    // ************************************** Build World ***************************************
+    
+    public void initializeWorld() {
+    	// Create the Locations:
+    	Location room1, room2;
+    	
+    	room1 = new Location("room1", 4);
+    	room2 = new Location("room2", 4);
+    	
+    	// Add directions to each room:
+    	room1.setDirections(new Direction(1, new Image("LocationImages/R1D1.jpg")));
+    	room1.setDirections(new Direction(2, new Image("LocationImages/R1D2.jpg")));
+    	room1.setDirections(new Direction(3, new Image("LocationImages/R1D3.jpg")));
+    	room1.setDirections(new Direction(4, new Image("LocationImages/R1D4.jpg")));
+    	
+    	room2.setDirections(new Direction(1, new Image("LocationImages/R2D1.jpg")));
+    	room2.setDirections(new Direction(2, new Image("LocationImages/R2D2.jpg")));
+    	room2.setDirections(new Direction(3, new Image("LocationImages/R2D3.jpg")));
+    	room2.setDirections(new Direction(4, new Image("LocationImages/R2D4.jpg")));
+    }
+}

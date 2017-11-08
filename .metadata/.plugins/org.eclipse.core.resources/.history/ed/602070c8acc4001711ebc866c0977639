@@ -1,0 +1,80 @@
+import java.util.ArrayList;
+
+import javax.tools.DocumentationTool.Location;
+
+import javafx.scene.image.Image;
+
+/**
+ * 
+ * The Direction Class provides a representation of 2D views a user encounters
+ * when turning around a location in the "ApplicationName" application. A
+ * collection of directions will be used to populate an instance of the Location
+ * Class.
+ * 
+ * @author Harris Flourentzos
+ * @version 1.0
+ *
+ */
+public class Direction {
+	// *************************** Fields ***************************
+	private int direction;
+	private Image directionImage;
+	private ArrayList<Item> items;
+	private ArrayList<Location> exits;
+
+	// *************************** CONSTRUCTORS ***************************
+	public Direction(int direction, Image directionImage) {
+		this.direction = direction;
+		this.directionImage = directionImage;
+		items = new ArrayList<Item>();
+		exits = new ArrayList<Location>();
+	}
+	// *************************** METHODS ***************************
+	
+	// Accessor Methods:
+	/**
+	 * @return The direction of the Direction.
+	 */
+	public int getDirection() {
+		return direction;
+	}
+	
+	/**
+	 * @return The image of the direction the user is looking at.
+	 */
+	public Image getDirectionImage() {
+		return directionImage;
+	}
+	
+	/**
+	 * 
+	 * @return The items present in the direction the user is looking at.
+	 */
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+	
+	/**
+	 * @return The exits available to the user in the direction he is looking at.
+	 */
+	public ArrayList<Location> getExits() {
+		return exits;
+	}
+	
+	// Mutator Methods:
+	
+	/**
+	 * Adds items into the direction the user is looking at.
+	 */
+	public void addItems(Item item) {
+		items.add(item);
+	}
+	
+	/**
+	 * Add the available exits in this direction.
+	 */
+	public void addExits(Location exit) {
+		exits.add(exit);
+	}
+
+}
