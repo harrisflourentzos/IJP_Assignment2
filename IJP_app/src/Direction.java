@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.scene.image.Image;
 
@@ -18,7 +17,7 @@ public class Direction {
 	private int direction;
 	private Image directionImage;
 	private HashMap<String, Item> items;
-	private ArrayList<Location> exits;
+	private Location exit;
 
 	// *************************** CONSTRUCTORS ***************************
 	/**
@@ -31,7 +30,7 @@ public class Direction {
 		this.direction = direction;
 		this.directionImage = directionImage;
 		items = new HashMap<String, Item>();
-		exits = new ArrayList<Location>();
+		exit = null;
 	}
 	// *************************** METHODS ***************************
 	
@@ -61,8 +60,8 @@ public class Direction {
 	/**
 	 * @return The exits available to the user in the direction he is looking at.
 	 */
-	public ArrayList<Location> getExits() {
-		return exits;
+	public Location getExit() {
+		return exit;
 	}
 	
 	// Mutator Methods:
@@ -77,8 +76,8 @@ public class Direction {
 	/**
 	 * Set the available exits in this direction.
 	 */
-	public void setExits(Location exit) {
-		exits.add(exit);
+	public void setExit(Location exit) {
+		this.exit = exit;
 	}
 
 }
