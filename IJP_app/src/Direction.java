@@ -1,4 +1,5 @@
-import java.util.HashMap;
+import java.util.HashSet;
+
 import javafx.scene.image.Image;
 
 /**
@@ -16,7 +17,7 @@ public class Direction {
 	// *************************** FIELDS ***************************
 	private int direction;
 	private Image directionImage;
-	private HashMap<String, Item> items;
+	private HashSet<Item> items;
 	private Location exit;
 
 	// *************************** CONSTRUCTORS ***************************
@@ -29,7 +30,7 @@ public class Direction {
 	public Direction(int direction, Image directionImage) {
 		this.direction = direction;
 		this.directionImage = directionImage;
-		items = new HashMap<String, Item>();
+		items = new HashSet<Item>();
 		exit = null;
 	}
 	// *************************** METHODS ***************************
@@ -53,7 +54,7 @@ public class Direction {
 	 * 
 	 * @return The items present in the direction the user is looking at.
 	 */
-	public HashMap<String, Item> getItems() {
+	public HashSet<Item> getItems() {
 		return items;
 	}
 	
@@ -69,8 +70,8 @@ public class Direction {
 	/**
 	 * Set items into the direction the user is looking at.
 	 */
-	public void setItems(Item item) {
-		items.put(item.getName(),item);
+	public void setItem(Item item) {
+		items.add(item);
 	}
 	
 	/**

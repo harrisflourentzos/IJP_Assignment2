@@ -12,8 +12,8 @@ public class Item {
 	// *************************** FIELDS ***************************
 	private String name;
 	private Image itemImage;
-	private String description;
-	private int weight;
+//	private String description;
+//	private int weight;
 
 	// *************************** CONSTRUCTORS ***************************
 	/**
@@ -24,12 +24,12 @@ public class Item {
 	 * @param description
 	 * @param weight
 	 */
-	public Item(String name, Image itemImage, String description, int weight) {
+	public Item(String name, Image itemImage) {
 		// initialise instance variables
 		this.name = name;
 		this.itemImage = itemImage;
-		this.description = description;
-		this.weight = weight;
+//		this.description = description;
+//		this.weight = weight;
 	}
 
 	// *************************** METHODS ***************************
@@ -38,16 +38,16 @@ public class Item {
 	/**
 	 * @return A string of an item's complete information.
 	 */
-	public String getItemInfo() {
-		return getName() + " " + getDescription() + " " + getWeight() + "kg";
-	}
+//	public String getItemInfo() {
+//		return getName() + " " + getDescription() + " " + getWeight() + "kg";
+//	}
 
 	/**
 	 * @return The description of the item.
 	 */
-	public String getDescription() {
-		return description;
-	}
+//	public String getDescription() {
+//		return description;
+//	}
 
 	/**
 	 * @return The image of the item.
@@ -66,7 +66,7 @@ public class Item {
 	/**
 	 * @return The weight of the item.
 	 */
-	public int getWeight() {
-		return weight;
-	}
+//	public int getWeight() {
+//		return weight;
+//	}
 }
