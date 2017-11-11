@@ -1,4 +1,4 @@
-import javafx.scene.image.Image;
+package model;
 
 /**
  * The Class Item is used to instantiate various item objects used in the
@@ -11,34 +11,18 @@ import javafx.scene.image.Image;
 public class Item {
 	
 	private String name;
-	private Image itemImage;
-//	private String description;
-//	private int weight;
+	private String image;
 
-	public Item(String name, Image itemImage) {
+	public Item(String name, String image) {
 		this.name = name;
-		this.itemImage = itemImage;
-//		this.description = description;
-//		this.weight = weight;
+		this.image = image;
 	}
 
-//	public String getItemInfo() {
-//		return getName() + " " + getDescription() + " " + getWeight() + "kg";
-//	}
-
-//	public String getDescription() {
-//		return description;
-//	}
-
-	public Image getItemImage() {
-		return itemImage;
+	public String getImage() {
+		return image;
 	}
 
 	public String getName() {
 		return name;
 	}
-	
-//	public int getWeight() {
-//		return weight;
-//	}
 }

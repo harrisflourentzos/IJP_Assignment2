@@ -1,3 +1,4 @@
+package model;
 import java.util.HashSet;
 
 import javafx.scene.image.Image;
@@ -41,10 +42,6 @@ public class Direction {
 	
 	public Location getExit() {
 		return exit;
-	}
-	
-	public void setItem(Item item) {
-		items.add(item);
 	}
 	
 	public void setExit(Location exit) {

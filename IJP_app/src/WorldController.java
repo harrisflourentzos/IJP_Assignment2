@@ -1,8 +1,11 @@
-import java.nio.file.Path;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import javafx.util.Callback;
+import model.Direction;
+import model.Item;
+import model.Location;
+import model.Player;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -11,7 +14,6 @@ import javafx.scene.image.Image;
 public class WorldController {
 	
 	private Player player;
-//	private ArrayList<ImageView> itemViews;
 
 	@FXML
 	private ImageView view;
@@ -22,6 +24,9 @@ public class WorldController {
 	@FXML
 	private ListView<Item> playerInventory;
 	
+	@FXML
+	private ListView<Item> locationInventory;
+	
 	public void initialise() {
 		// set up UI-related components
 		configureComponents();
@@ -29,11 +34,6 @@ public class WorldController {
 		buildWorld();
 		// display the direction the player is looking at.
         updateView();
-        // create a collection of itemViews depending on the maximum number of items a direction will have.
-//        itemViews.add(item1);
-//        itemViews.add(item2);
-//        itemViews.add(item3);
-//        itemViews.add(item4);
 	}
 	
 	/**
@@ -42,10 +42,10 @@ public class WorldController {
 	public void updateView() {
 		view.setImage(player.getCurrentDirection().getDirectionImage());
 		
-		playerInventory.getItems().clear();
+		locationInventory.getItems().clear();
 		
 		for(Item item : player.getCurrentDirection().getItems()) {
-			playerInventory.getItems().add(item);
+			locationInventory.getItems().add(item);
 		}
 	}
 	
@@ -85,7 +85,7 @@ public class WorldController {
 	}
     
 	public void configureComponents() {
-		playerInventory.setCellFactory(listView -> new ListCell<Item>() {
+		final Callback<ListView<Item>, ListCell<Item>> cellFactory = listView -> new ListCell<Item>() {
             private final ImageView imageView = new ImageView();
 
            @Override
@@ -95,14 +95,20 @@ public class WorldController {
                     setText(null);
                     setGraphic(null);
                 } else {
+                	// set the name of the item as the text
                     setText(item.getName());
-                    imageView.setImage(item.getItemImage());
+                    
+                    // set the picture of the item as the thumbnail
+                    imageView.setImage(new Image(item.getImage()));
                     imageView.setFitWidth(40);
                     imageView.setFitHeight(40);
                     setGraphic(imageView);
                 }
             }
-        });
+        };
+        
+		playerInventory.setCellFactory(cellFactory);
+		locationInventory.setCellFactory(cellFactory);
 	}
 	
     public void buildWorld() {
@@ -129,20 +135,20 @@ public class WorldController {
     	Direction r2d4 = new Direction(3, new Image("LocationImages/R2D4.png"));
     	
     	// Initialise items :
-    	Item cat = new Item("cat",new Image("ItemImages/cat.png"));
-    	Item dog = new Item("dog",new Image("ItemImages/dog.png"));
-    	Item grape = new Item("grape",new Image("ItemImages/grape.png"));
-    	Item apple = new Item("apple",new Image("ItemImages/apple.png"));
-    	Item mushroom = new Item("mushroom",new Image("ItemImages/mushroom.png"));
-    	Item basketball = new Item("basketball",new Image("ItemImages/basketball.png"));
+    	Item cat = new Item("cat", "ItemImages/cat.png");
+    	Item dog = new Item("dog", "ItemImages/dog.png");
+    	Item grape = new Item("grape", "ItemImages/grape.png");
+    	Item apple = new Item("apple", "ItemImages/apple.png");
+    	Item mushroom = new Item("mushroom", "ItemImages/mushroom.png");
+    	Item basketball = new Item("basketball", "ItemImages/basketball.png");
     	
     	// Add items to directions:
-    	r1d1.setItem(cat);
-    	r1d4.setItem(dog);
-    	r1d4.setItem(mushroom);
-    	r2d3.setItem(grape);
-    	r2d1.setItem(basketball);
-    	r2d4.setItem(apple);
+    	r1d1.getItems().add(cat);
+    	r1d4.getItems().add(dog);
+    	r1d4.getItems().add(mushroom);
+    	r2d3.getItems().add(grape);
+    	r2d1.getItems().add(basketball);
+    	r2d4.getItems().add(apple);
     	
     	// Add directions to each room:
     	room1.addDirection(r1d1);

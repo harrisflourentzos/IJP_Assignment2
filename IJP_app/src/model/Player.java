@@ -1,4 +1,5 @@
-import java.util.HashMap;
+package model;
+import java.util.HashSet;
 /**
  * 
  * The Class Player represents the person navigating through the "ApplicationName" application. 
@@ -11,7 +12,7 @@ public class Player {
 	
 	private Location currentLocation;
 	private Direction currentDirection;
-	private HashMap<String, Item> inventory = new HashMap<String, Item>();
+	private HashSet<Item> inventory = new HashSet<Item>();
 	
 	public Player(Location location) {
 		currentLocation = location;
@@ -34,14 +35,7 @@ public class Player {
 		currentDirection = direction;
 	}
 	
-	public Item getItem(String itemName) {
-		return inventory.get(itemName);
-	}
-	
-	public void pickUpItem(Item item) {
-		inventory.put(item.getName(), item);
-	}
-	public void dropItem(String itemName) {
-		inventory.remove(itemName);
+	public HashSet<Item> getInventory() {
+		return inventory;
 	}
 }
