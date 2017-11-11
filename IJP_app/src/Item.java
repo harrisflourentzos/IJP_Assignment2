@@ -9,63 +9,35 @@ import javafx.scene.image.Image;
  * @version 1.0 08/11/2017
  */
 public class Item {
-	// *************************** FIELDS ***************************
+	
 	private String name;
 	private Image itemImage;
 //	private String description;
 //	private int weight;
 
-	// *************************** CONSTRUCTORS ***************************
-	/**
-	 * Constructor for objects of class Item
-	 * 
-	 * @param name
-	 * @param itemImage
-	 * @param description
-	 * @param weight
-	 */
 	public Item(String name, Image itemImage) {
-		// initialise instance variables
 		this.name = name;
 		this.itemImage = itemImage;
 //		this.description = description;
 //		this.weight = weight;
 	}
 
-	// *************************** METHODS ***************************
-
-	// Accessor methods:
-	/**
-	 * @return A string of an item's complete information.
-	 */
 //	public String getItemInfo() {
 //		return getName() + " " + getDescription() + " " + getWeight() + "kg";
 //	}
 
-	/**
-	 * @return The description of the item.
-	 */
 //	public String getDescription() {
 //		return description;
 //	}
 
-	/**
-	 * @return The image of the item.
-	 */
 	public Image getItemImage() {
 		return itemImage;
 	}
 
-	/**
-	 * @return The name of the item.
-	 */
 	public String getName() {
 		return name;
 	}
-
-	/**
-	 * @return The weight of the item.
-	 */
+	
 //	public int getWeight() {
 //		return weight;
 //	}

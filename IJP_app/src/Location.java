@@ -11,58 +11,27 @@ import java.util.ArrayList;
  *
  */
 public class Location {
-	// *************************** FIELDS ***************************
-	private String name;
-	private int numberOfDirections;
-	private ArrayList<Direction> directions;
 
-	// *************************** CONSTRUCTORS ***************************
-	/**
-	 * Constructor of the Class Location.
-	 * 
-	 * @param name
-	 * @param numberOfDirections
-	 */
-	public Location(String name, int numberOfDirections) {
+	private String name;
+	private ArrayList<Direction> directions = new ArrayList<Direction>();
+
+	public Location(String name) {
 		this.name = name;
-		this.numberOfDirections = numberOfDirections;
-		directions = new ArrayList<Direction>();
 	}
 
-	// *************************** METHODS ***************************
-	// Accessor & Mutator Methods:
-	/**
-	 * 
-	 * @return The name of the Location.
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * 
-	 * @return The number of the available directions for this Location.
-	 */
 	public int getNumberOfDirections() {
-		return numberOfDirections;
+		return directions.size();
 	}
 
-	/**
-	 * 
-	 * @return A list of all the available directions for this Location.
-	 */
 	public ArrayList<Direction> getDirections() {
 		return directions;
 	}
-	/**
-	 * Mutator method to populate the Location with directions.
-	 * @param direction
-	 */
-	public void setDirections(Direction direction) {
+
+	public void addDirection(Direction direction) {
 		directions.add(direction);
 	}
-	
-	// Other Methods:
-	
-
 }

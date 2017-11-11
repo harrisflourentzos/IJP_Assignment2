@@ -115,8 +115,8 @@ public class WorldController {
     	// Create the Locations:
     	Location room1, room2;
     	
-    	room1 = new Location("room1", 4);
-    	room2 = new Location("room2", 4);
+    	room1 = new Location("room1");
+    	room2 = new Location("room2");
     	
     	// Initialise Directions for each room and set their exits if they have any:
     	
@@ -151,15 +151,15 @@ public class WorldController {
     	r2d4.setItem(apple);
     	
     	// Add directions to each room:
-    	room1.setDirections(r1d1);
-    	room1.setDirections(r1d2);
-    	room1.setDirections(r1d3);
-    	room1.setDirections(r1d4);
+    	room1.addDirection(r1d1);
+    	room1.addDirection(r1d2);
+    	room1.addDirection(r1d3);
+    	room1.addDirection(r1d4);
     	
-    	room2.setDirections(r2d1);
-    	room2.setDirections(r2d2);
-    	room2.setDirections(r2d3);
-    	room2.setDirections(r2d4);
+    	room2.addDirection(r2d1);
+    	room2.addDirection(r2d2);
+    	room2.addDirection(r2d3);
+    	room2.addDirection(r2d4);
     	
     	
     	// Initialise Player:

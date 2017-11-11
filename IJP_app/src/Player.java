@@ -11,7 +11,7 @@ public class Player {
 	
 	private Location currentLocation;
 	private Direction currentDirection;
-	private HashMap<String, Item> myItems = new HashMap<String, Item>();
+	private HashMap<String, Item> inventory = new HashMap<String, Item>();
 	
 	public Player(Location location) {
 		currentLocation = location;
@@ -35,13 +35,13 @@ public class Player {
 	}
 	
 	public Item getItem(String itemName) {
-		return myItems.get(itemName);
+		return inventory.get(itemName);
 	}
 	
 	public void pickUpItem(Item item) {
-		myItems.put(item.getName(), item);
+		inventory.put(item.getName(), item);
 	}
 	public void dropItem(String itemName) {
-		myItems.remove(itemName);
+		inventory.remove(itemName);
 	}
 }
