@@ -3,7 +3,7 @@ import java.util.Iterator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 
 public class WorldController {
@@ -15,7 +15,7 @@ public class WorldController {
 	private ImageView imageView;
 	
 	@FXML
-	private TextField message;
+	private Label message;
 	
 	@FXML
 	private ImageView item1;
