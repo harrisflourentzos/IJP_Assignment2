@@ -1,9 +1,11 @@
-import java.util.Iterator;
+import java.nio.file.Path;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 
 public class WorldController {
@@ -12,22 +14,17 @@ public class WorldController {
 //	private ArrayList<ImageView> itemViews;
 
 	@FXML
-	private ImageView imageView;
+	private ImageView view;
 	
 	@FXML
 	private Label message;
 	
 	@FXML
-	private ImageView item1;
-	@FXML
-	private ImageView item2;
-	@FXML
-	private ImageView item3;
-	@FXML
-	private ImageView item4;
-	
+	private ListView<Item> playerInventory;
 	
 	public void initialise() {
+		// set up UI-related components
+		configureComponents();
 		// create the world and the player.
 		buildWorld();
 		// display the direction the player is looking at.
@@ -43,37 +40,13 @@ public class WorldController {
 	 * Update the view the player is looking at and the items present in that view.
 	 */
 	public void updateView() {
+		view.setImage(player.getCurrentDirection().getDirectionImage());
 		
-		imageView.setImage(player.getCurrentDirection().getDirectionImage());
+		playerInventory.getItems().clear();
 		
-		clearItemViews();
-		Iterator<Item> it = player.getCurrentDirection().getItems().iterator();
-		
-		if(it.hasNext()) {
-			item1.setImage(it.next().getItemImage());
+		for(Item item : player.getCurrentDirection().getItems()) {
+			playerInventory.getItems().add(item);
 		}
-		if(it.hasNext()) {
-			item2.setImage(it.next().getItemImage());
-		}
-		if(it.hasNext()) {
-			item3.setImage(it.next().getItemImage());
-		}
-		if(it.hasNext()) {
-			item4.setImage(it.next().getItemImage());
-		}
-		
-		
-//		Iterator<ImageView> it = itemViews.iterator();
-//		for(String item : player.getCurrentDirection().getItems().keySet()) {
-//			it.next().setImage(player.getCurrentDirection().getItems().get(item).getItemImage());
-//		}
-	}
-
-	public void clearItemViews() {
-		item1.setImage(null);
-		item2.setImage(null);
-		item3.setImage(null);
-		item4.setImage(null);
 	}
 	
 	public void clearMessage() {
@@ -111,6 +84,27 @@ public class WorldController {
 		}
 	}
     
+	public void configureComponents() {
+		playerInventory.setCellFactory(listView -> new ListCell<Item>() {
+            private final ImageView imageView = new ImageView();
+
+           @Override
+            public void updateItem(Item item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(item.getName());
+                    imageView.setImage(item.getItemImage());
+                    imageView.setFitWidth(40);
+                    imageView.setFitHeight(40);
+                    setGraphic(imageView);
+                }
+            }
+        });
+	}
+	
     public void buildWorld() {
     	// Create the Locations:
     	Location room1, room2;
