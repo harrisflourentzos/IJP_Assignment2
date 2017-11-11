@@ -1,3 +1,6 @@
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -47,6 +50,12 @@ public class WorldController {
 		for(Item item : player.getCurrentDirection().getItems()) {
 			locationInventory.getItems().add(item);
 		}
+		
+		playerInventory.getItems().clear();
+		
+		for(Item item : player.getInventory()) {
+			playerInventory.getItems().add(item);
+		}
 	}
 	
 	public void clearMessage() {
@@ -84,7 +93,28 @@ public class WorldController {
 		}
 	}
     
+	public void pickUpItem(Item item) {
+		if (item == null) return;
+		player.getCurrentDirection().getItems().remove(item);
+		player.getInventory().add(item);
+		
+		message.setText("You picked up " + item.getName());
+		
+		updateView();
+	}
+	
+	public void dropItem(Item item) {
+		if (item == null) return;
+		player.getInventory().remove(item);
+		player.getCurrentDirection().getItems().add(item);
+		
+		message.setText("You dropped " + item.getName());
+		
+		updateView();
+	}
+	
 	public void configureComponents() {
+		// render the items with a thumbnail followed by the name of the item
 		final Callback<ListView<Item>, ListCell<Item>> cellFactory = listView -> new ListCell<Item>() {
             private final ImageView imageView = new ImageView();
 
@@ -109,6 +139,22 @@ public class WorldController {
         
 		playerInventory.setCellFactory(cellFactory);
 		locationInventory.setCellFactory(cellFactory);
+		
+		// when the player clicks on an item in the world, it is transferred to his inventory
+		locationInventory.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Item>() {
+		    @Override
+		    public void changed(ObservableValue<? extends Item> observable, Item oldValue, Item newValue) {
+		    	Platform.runLater(() -> pickUpItem(newValue));
+		    }
+		});
+		
+		// when the player clicks on an item in his inventory, it is dropped in the current view
+		playerInventory.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Item>() {
+		    @Override
+		    public void changed(ObservableValue<? extends Item> observable, Item oldValue, Item newValue) {
+		    	Platform.runLater(() -> dropItem(newValue));
+		    }
+		});
 	}
 	
     public void buildWorld() {
