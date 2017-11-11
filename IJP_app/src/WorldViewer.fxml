@@ -18,11 +18,11 @@
       </AnchorPane>
       <AnchorPane layoutX="164.0" layoutY="237.0" prefHeight="70.0" prefWidth="273.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="163.0">
          <children>
-            <Button fx:id="ButtonLeft" layoutY="36.0" mnemonicParsing="false" onAction="#pressLeftButton" prefHeight="33.0" prefWidth="90.0" text="turnLeft" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="36.0" />
-            <Button fx:id="ButtonRight" layoutX="182.0" layoutY="36.0" mnemonicParsing="false" onAction="#pressRightButton" prefHeight="33.0" prefWidth="90.0" text="turnRight" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0" />
-            <Button fx:id="ButtonForward" layoutX="91.0" layoutY="3.0" mnemonicParsing="false" onAction="#pressForwardButton" prefHeight="33.0" prefWidth="91.0" text="MoveForward" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="91.0" AnchorPane.topAnchor="3.0" />
+            <Button fx:id="ButtonLeft" layoutY="36.0" mnemonicParsing="false" onAction="#turnLeft" prefHeight="33.0" prefWidth="90.0" text="Left" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="36.0" />
+            <Button fx:id="ButtonRight" layoutX="182.0" layoutY="36.0" mnemonicParsing="false" onAction="#turnRight" prefHeight="33.0" prefWidth="90.0" text="Right" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0" />
+            <Button fx:id="ButtonForward" layoutX="91.0" layoutY="3.0" mnemonicParsing="false" onAction="#moveForward" prefHeight="33.0" prefWidth="91.0" text="Forward" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="91.0" AnchorPane.topAnchor="3.0" />
          </children>
       </AnchorPane>
-      <TextField fx:id="messageID" layoutX="99.0" layoutY="49.0" prefHeight="25.0" prefWidth="403.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="49.0" />
+      <TextField fx:id="message" layoutX="99.0" layoutY="49.0" prefHeight="25.0" prefWidth="403.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="49.0" />
    </children>
 </AnchorPane>

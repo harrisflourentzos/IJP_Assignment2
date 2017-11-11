@@ -22,7 +22,7 @@ public class MainProgram extends Application {
 			stage.setScene(scene);
 			
 			WorldController controller = (WorldController) fxmlLoader.getController();      			
-			controller.Initialise();
+			controller.initialise();
 
 			stage.show();
         

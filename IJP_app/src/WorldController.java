@@ -15,7 +15,7 @@ public class WorldController {
 	private ImageView imageView;
 	
 	@FXML
-	private TextField messageID;
+	private TextField message;
 	
 	@FXML
 	private ImageView item1;
@@ -27,9 +27,9 @@ public class WorldController {
 	private ImageView item4;
 	
 	
-	public void Initialise() {
+	public void initialise() {
 		// create the world and the player.
-		initialiseWorld();
+		buildWorld();
 		// display the direction the player is looking at.
         updateView();
         // create a collection of itemViews depending on the maximum number of items a direction will have.
@@ -68,10 +68,7 @@ public class WorldController {
 //			it.next().setImage(player.getCurrentDirection().getItems().get(item).getItemImage());
 //		}
 	}
-	
-	/**
-	 * Clears the itemViews.
-	 */
+
 	public void clearItemViews() {
 		item1.setImage(null);
 		item2.setImage(null);
@@ -79,48 +76,32 @@ public class WorldController {
 		item4.setImage(null);
 	}
 	
-	/**
-	 * Clear the text in the message.
-	 */
-	public void resetTextField() {
-		messageID.setText("");
+	public void clearMessage() {
+		message.setText("");
 	}
 	
-	/**
-	 * Player turns and looks to the right.
-	 * @param event
-	 */
-    public void pressRightButton(ActionEvent event) {
+    public void turnRight(ActionEvent event) {
     	int indexOfCurrentDirection = player.getCurrentDirection().getDirection();
     	int NoOfDir = player.getCurrentLocation().getNumberOfDirections();
     	
-    	resetTextField();
+    	clearMessage();
     	player.setCurrentDirection(player.getCurrentLocation().getDirections().get( ((indexOfCurrentDirection)+1)% NoOfDir ));
         updateView();
     }
     
-    /**
-     * Player turns and looks to the left.
-     * @param event
-     */
-    public void pressLeftButton(ActionEvent event) {
+    public void turnLeft(ActionEvent event) {
     	int indexOfCurrentDirection = player.getCurrentDirection().getDirection();
     	int NoOfDir = player.getCurrentLocation().getNumberOfDirections();
     	
-    	resetTextField();
+    	clearMessage();
     	player.setCurrentDirection(player.getCurrentLocation().getDirections().get( (NoOfDir + (indexOfCurrentDirection)-1)% NoOfDir));
         updateView();
-    	
     }
     
-    /**
-     * Player moves towards the direction he/she is looking at.
-     * @param event
-     */
-	public void pressForwardButton(ActionEvent event) {
+	public void moveForward(ActionEvent event) {
 
 		if (player.getCurrentDirection().getExit() == null) {
-			messageID.setText("You cannot move into this direction");
+			message.setText("You cannot move into this direction");
 		} else {
 			Location newLocation = player.getCurrentDirection().getExit();
 
@@ -130,9 +111,7 @@ public class WorldController {
 		}
 	}
     
-    // ************************************** Build World ***************************************
-    
-    public void initialiseWorld() {
+    public void buildWorld() {
     	// Create the Locations:
     	Location room1, room2;
     	
@@ -171,7 +150,6 @@ public class WorldController {
     	r2d1.setItem(basketball);
     	r2d4.setItem(apple);
     	
-    	
     	// Add directions to each room:
     	room1.setDirections(r1d1);
     	room1.setDirections(r1d2);
@@ -186,6 +164,5 @@ public class WorldController {
     	
     	// Initialise Player:
     	player = new Player(room1);
-    	
     }
 }

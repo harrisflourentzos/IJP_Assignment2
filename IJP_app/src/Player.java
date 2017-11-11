@@ -8,43 +8,40 @@ import java.util.HashMap;
  *
  */
 public class Player {
-	// *************************** FIELDS ***************************
+	
 	private Location currentLocation;
 	private Direction currentDirection;
-	private HashMap<String,Item> myItems;
+	private HashMap<String, Item> myItems = new HashMap<String, Item>();
 	
-	// *************************** CONSTRUCTORS ***************************
 	public Player(Location location) {
 		currentLocation = location;
 		currentDirection = currentLocation.getDirections().get(0);
-		myItems = new HashMap<String, Item>();
 	}
 	
-	// *************************** METHODS ***************************
-	
-	// Accessor & Mutator Methods:
 	public Location getCurrentLocation() {
 		return currentLocation;
 	}
+	
 	public void setCurrentLocation(Location location) {
 		currentLocation = location;
 	}
+	
 	public Direction getCurrentDirection() {
 		return currentDirection;
 	}
+	
 	public void setCurrentDirection(Direction direction) {
 		currentDirection = direction;
 	}
+	
 	public Item getItem(String itemName) {
 		return myItems.get(itemName);
 	}
 	
-	// Other Methods:
 	public void pickUpItem(Item item) {
 		myItems.put(item.getName(), item);
 	}
 	public void dropItem(String itemName) {
 		myItems.remove(itemName);
 	}
-
 }
