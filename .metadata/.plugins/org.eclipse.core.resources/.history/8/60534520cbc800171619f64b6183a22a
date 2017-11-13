@@ -129,7 +129,7 @@ public class WorldController {
                     setText(item.getName());
                     
                     // set the picture of the item as the thumbnail
-                    imageView.setImage(item.getImage());
+                    imageView.setImage(new Image(item.getImage()));
                     imageView.setFitWidth(40);
                     imageView.setFitHeight(40);
                     setGraphic(imageView);
@@ -181,12 +181,12 @@ public class WorldController {
     	Direction r2d4 = new Direction(3, new Image("LocationImages/R2D4.png"));
     	
     	// Initialise items :
-    	Item cat = new Item("cat", new Image("ItemImages/cat.png"));
-    	Item dog = new Item("dog", new Image("ItemImages/dog.png"));
-    	Item grape = new Item("grape", new Image("ItemImages/grape.png"));
-    	Item apple = new Item("apple", new Image("ItemImages/apple.png"));
-    	Item mushroom = new Item("mushroom", new Image("ItemImages/mushroom.png"));
-    	Item basketball = new Item("basketball", new Image("ItemImages/basketball.png"));
+    	Item cat = new Item("cat", "ItemImages/cat.png");
+    	Item dog = new Item("dog", "ItemImages/dog.png");
+    	Item grape = new Item("grape", "ItemImages/grape.png");
+    	Item apple = new Item("apple", "ItemImages/apple.png");
+    	Item mushroom = new Item("mushroom", "ItemImages/mushroom.png");
+    	Item basketball = new Item("basketball", "ItemImages/basketball.png");
     	
     	// Add items to directions:
     	r1d1.getItems().add(cat);
