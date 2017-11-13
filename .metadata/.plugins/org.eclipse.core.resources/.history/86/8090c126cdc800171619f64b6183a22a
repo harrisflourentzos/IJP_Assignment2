@@ -87,8 +87,8 @@ public class WorldController {
 		} else {
 			Location newLocation = worldMap.getCurrentDirection().getExit();
 
-			worldMap.setCurrentLocation(newLocation);
-			worldMap.setCurrentDirection(newLocation.getDirections().get(worldMap.getCurrentDirection().getDirection()));
+			player.setCurrentLocation(newLocation);
+			player.setCurrentDirection(newLocation.getDirections().get(worldMap.getCurrentDirection().getDirection()));
 			updateView();
 		}
 	}
