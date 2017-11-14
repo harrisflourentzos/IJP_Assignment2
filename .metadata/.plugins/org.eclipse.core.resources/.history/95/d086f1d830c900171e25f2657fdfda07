@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 
 public class MainProgram extends Application {
 
@@ -16,10 +16,9 @@ public class MainProgram extends Application {
 		try {
 
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			String viewerFxml = "WorldViewer1.fxml";
-			BorderPane page = (BorderPane) fxmlLoader.load(this.getClass().getResource(viewerFxml).openStream());
+			String viewerFxml = "WorldViewer.fxml";
+			AnchorPane page = (AnchorPane) fxmlLoader.load(this.getClass().getResource(viewerFxml).openStream());
 			Scene scene = new Scene(page);
-			scene.getStylesheets().add("listcellstyle.css");
 			stage.setScene(scene);
 			
 			WorldController controller = (WorldController) fxmlLoader.getController();      			

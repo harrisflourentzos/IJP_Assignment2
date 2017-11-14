@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WorldController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #777777;">
+         <children>
+            <ImageView fx:id="view" fitHeight="573.0" fitWidth="659.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="14.0" />
+            <AnchorPane layoutX="214.0" layoutY="498.0" prefHeight="70.0" prefWidth="272.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="214.0">
+               <children>
+                  <Button fx:id="ButtonLeft" layoutY="36.0" mnemonicParsing="false" onAction="#turnLeft" prefHeight="33.0" prefWidth="90.0" text="Left" />
+                  <Button fx:id="ButtonRight" layoutX="182.0" layoutY="36.0" mnemonicParsing="false" onAction="#turnRight" prefHeight="33.0" prefWidth="90.0" text="Right" />
+                  <Button fx:id="ButtonForward" layoutX="91.0" layoutY="3.0" mnemonicParsing="false" onAction="#moveForward" prefHeight="33.0" prefWidth="91.0" text="Forward" />
+               </children>
+            </AnchorPane>
+            <ListView fx:id="locationInventory" layoutX="24.0" layoutY="413.0" orientation="HORIZONTAL" prefHeight="75.0" prefWidth="652.0" style="-fx-background-color: transparent;" />
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <ListView fx:id="playerInventory" orientation="HORIZONTAL" prefHeight="75.0" prefWidth="560.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <Label fx:id="message" alignment="CENTER" prefHeight="33.0" prefWidth="700.0" style="-fx-background-color: #e2e2e2;" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>
