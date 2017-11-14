@@ -27,10 +27,6 @@ public class Location {
 	public int getNumberOfDirections() {
 		return directions.size();
 	}
-	
-	public int getIndexOfDirection(Direction direction) {
-		return directions.indexOf(direction);
-	}
 
 	public ArrayList<Direction> getDirections() {
 		return directions;

@@ -6,4 +6,5 @@
 <fullyQualifiedTypeName name="javafx.scene.control.TextField"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.BorderPane"/>
 </qualifiedTypeNameHistroy>

@@ -27,10 +27,6 @@ public class Location {
 	public int getNumberOfDirections() {
 		return directions.size();
 	}
-	
-	public int getIndexOfDirection(Direction direction) {
-		return directions.indexOf(direction);
-	}
 
 	public ArrayList<Direction> getDirections() {
 		return directions;
@@ -38,15 +34,5 @@ public class Location {
 
 	public void addDirection(Direction direction) {
 		directions.add(direction);
-	}
-	
-	public Direction getRightDirection(Direction currentDirection) {
-		Direction rightDirection =  directions.get( (directions.indexOf(currentDirection)+1) % directions.size() );
-		return rightDirection;
-	}
-	
-	public Direction getLeftDirection(Direction currentDirection) {
-		Direction leftDirection =  directions.get( (directions.size() + directions.indexOf(currentDirection)-1) % directions.size() );
-		return leftDirection;
 	}
 }

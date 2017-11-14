@@ -16,15 +16,20 @@ import javafx.scene.image.Image;
  */
 public class Direction {
 	
+	private int direction;
 	private Image directionImage;
 	private HashSet<Item> items;
 	private Location exit;
 
 	public Direction(int direction, Image directionImage) {
-
+		this.direction = direction;
 		this.directionImage = directionImage;
 		items = new HashSet<Item>();
 		exit = null;
+	}
+
+	public int getDirection() {
+		return direction;
 	}
 	
 	public Image getDirectionImage() {

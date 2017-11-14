@@ -61,15 +61,21 @@ public class WorldController {
 	}
 	
     public void turnRight(ActionEvent event) {
+//    	int indexOfCurrentDirection = worldMap.getCurrentDirection().getDirection();
+//    	int NoOfDir = worldMap.getCurrentLocation().getNumberOfDirections();
     	
     	clearMessage();
+//    	worldMap.setCurrentDirection(worldMap.getCurrentLocation().getDirections().get( ((indexOfCurrentDirection)+1)% NoOfDir ));
     	worldMap.setCurrentDirection(worldMap.getCurrentLocation().getRightDirection(worldMap.getCurrentDirection()));
         updateView();
     }
     
     public void turnLeft(ActionEvent event) {
+//    	int indexOfCurrentDirection = worldMap.getCurrentDirection().getDirection();
+//    	int NoOfDir = worldMap.getCurrentLocation().getNumberOfDirections();
     	
     	clearMessage();
+//    	worldMap.setCurrentDirection(worldMap.getCurrentLocation().getDirections().get( (NoOfDir + (indexOfCurrentDirection)-1)% NoOfDir));
     	worldMap.setCurrentDirection(worldMap.getCurrentLocation().getLeftDirection(worldMap.getCurrentDirection()));
         updateView();
     }
@@ -80,10 +86,9 @@ public class WorldController {
 			message.setText("You cannot move into this direction");
 		} else {
 			Location newLocation = worldMap.getCurrentDirection().getExit();
-			int index = worldMap.getCurrentLocation().getIndexOfDirection(worldMap.getCurrentDirection());
 
 			worldMap.setCurrentLocation(newLocation);
-			worldMap.setCurrentDirection(newLocation.getDirections().get(index));
+			worldMap.setCurrentDirection(newLocation.getDirections().get(worldMap.getCurrentDirection().getDirection()));
 			updateView();
 		}
 	}

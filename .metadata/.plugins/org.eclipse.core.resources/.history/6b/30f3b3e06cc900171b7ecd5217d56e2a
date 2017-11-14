@@ -80,10 +80,9 @@ public class WorldController {
 			message.setText("You cannot move into this direction");
 		} else {
 			Location newLocation = worldMap.getCurrentDirection().getExit();
-			int index = worldMap.getCurrentLocation().getIndexOfDirection(worldMap.getCurrentDirection());
 
 			worldMap.setCurrentLocation(newLocation);
-			worldMap.setCurrentDirection(newLocation.getDirections().get(index));
+			worldMap.setCurrentDirection(newLocation.getDirections().get(worldMap.getCurrentDirection().getDirection()));
 			updateView();
 		}
 	}
